@@ -1,0 +1,128 @@
+@import "tailwindcss";
+
+/* ---------------- Honey + Mountain Theme Variables ---------------- */
+:root {
+  /* Honey Colors */
+  --honey-light: #FFF7E1;
+  --honey-gold: #FBBF24;
+  --honey-dark: #D97706;
+  --brown: #5C4033;
+
+  /* Mountain Green Colors */
+  --mountain-green: #1E7F3E;        /* primary green for accents */
+  --mountain-green-light: #4CAF7B;  /* lighter green variant */
+
+  /* Text Colors */
+  --text-main: #1A1A1A;
+  --text-light: #444;
+  --heading-color: #111111; /* Stronger heading color */
+
+  /* Background / Foreground */
+  --background: var(--honey-light);
+  --foreground: var(--text-main);
+
+  /* Fonts */
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-accent: 'Playfair Display', serif;
+
+  /* Misc */
+  --radius: 12px;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  --transition-fast: 0.18s ease;
+  --transition-slow: 0.35s ease;
+}
+
+/* ---------------- Dark Mode ---------------- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #1a1a1a;
+    --foreground: #e6e6e6;
+    --text-light: #c9c9c9;
+    --heading-color: #FBBF24;          /* Bright honey for headings */
+    --mountain-green: #4CAF7B;         /* lighter green in dark mode */
+  }
+}
+
+/* ---------------- Base Reset ---------------- */
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  margin: 0;
+  padding: 0;
+  line-height: 1.65;
+  scroll-behavior: smooth;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ---------------- Headings ---------------- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-accent);
+  color: var(--heading-color); /* Use the global heading color */
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+
+/* Optional accent class for honey or green headings */
+.accent-honey {
+  color: var(--honey-dark);
+}
+.accent-green {
+  color: var(--mountain-green);
+}
+
+/* ---------------- Links ---------------- */
+a {
+  color: var(--honey-dark);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+a:hover {
+  color: var(--honey-gold);
+}
+
+/* ---------------- Container ---------------- */
+.container {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+/* ---------------- Buttons ---------------- */
+button, .btn {
+  background: var(--honey-gold);
+  color: #fff;
+  border-radius: var(--radius);
+  padding: 0.6rem 1.4rem;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+  box-shadow: var(--shadow);
+  font-weight: 600;
+}
+button:hover, .btn:hover {
+  background: var(--honey-dark);
+  transform: translateY(-2px);
+}
+
+/* Green variant buttons */
+.btn-green {
+  background: var(--mountain-green);
+}
+.btn-green:hover {
+  background: var(--mountain-green-light);
+}
+
+/* ---------------- Animations ---------------- */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 0.7s ease forwards;
+}
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
